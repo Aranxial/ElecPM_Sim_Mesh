@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot">
+
+  <!-- Define constants and macros if needed -->
+  <xacro:property name="mesh_filename_1" value="$(find aruco_cube)/meshes/face_1.dae"/>
+  <xacro:property name="mesh_filename_2" value="$(find aruco_cube)/meshes/face_2.dae"/>
+  <xacro:property name="mesh_filename_3" value="$(find aruco_cube)/meshes/face_3.dae"/>
+  <xacro:property name="mesh_filename_4" value="$(find aruco_cube)/meshes/face_4.dae"/>
+  <xacro:property name="mesh_filename_5" value="$(find aruco_cube)/meshes/face_5.dae"/>
+  <xacro:property name="mesh_filename_6" value="$(find aruco_cube)/meshes/face_6.dae"/>
+  <xacro:property name="mesh_scale" value="0.5"/>
+  
+  <!-- World tag-->
+  <link name="my_world"></link>
+  
+  <!-- The base origin is offset from the world origin. -->
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="my_world"/>
+    <child link="textured_link"/>        
+  </joint>
+
+  <link name="textured_link">
+    <visual>
+    <origin xyz="-3 0 0"/>
+      <geometry>
+        <mesh filename="${mesh_filename_1}" scale="${mesh_scale} ${mesh_scale} ${mesh_scale}"/>
+      </geometry>
+    </visual>
+    <visual>
+    <origin xyz="-2 0 0"/>
+      <geometry>
+        <mesh filename="${mesh_filename_2}" scale="${mesh_scale} ${mesh_scale} ${mesh_scale}"/>
+      </geometry>
+    </visual>
+    <visual>
+    <origin xyz="-1 0 0"/>
+      <geometry>
+        <mesh filename="${mesh_filename_3}" scale="${mesh_scale} ${mesh_scale} ${mesh_scale}"/>
+      </geometry>
+    </visual>
+    <visual>
+    <origin xyz="1 0 0"/>
+      <geometry>
+        <mesh filename="${mesh_filename_4}" scale="${mesh_scale} ${mesh_scale} ${mesh_scale}"/>
+      </geometry>
+    </visual>
+    <visual>
+    <origin xyz="2 0 0"/>
+      <geometry>
+        <mesh filename="${mesh_filename_5}" scale="${mesh_scale} ${mesh_scale} ${mesh_scale}"/>
+      </geometry>
+    </visual>
+    <visual>
+    <origin xyz="3 0 0"/>
+      <geometry>
+        <mesh filename="${mesh_filename_6}" scale="${mesh_scale} ${mesh_scale} ${mesh_scale}"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+</robot>
+
